@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8fe27fa313984683a53f1f218ea16d33" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AppointmentsTable" Width="1.5" PointX="2.625" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DoctorsTable" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MessagesTable" Width="1.5" PointX="6.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsersTable" Width="1.5" PointX="0.5" PointY="2.25" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK__DoctorsTa__UserL__34C8D9D1" />
+        <AssociationConnector Association="Model.FK__Appointme__Docto__47DBAE45" />
+        <AssociationConnector Association="Model.FK__MessagesT__Messa__5BE2A6F2" />
+        <AssociationConnector Association="Model.FK__MessagesT__Messa__5CD6CB2B" />
+        <EntityTypeShape EntityType="Model.MedicationListTable" Width="1.5" PointX="8.5" PointY="5.5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

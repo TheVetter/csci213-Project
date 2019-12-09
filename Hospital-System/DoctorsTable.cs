@@ -18,6 +18,8 @@ namespace Hospital_System
         public DoctorsTable()
         {
             this.AppointmentsTables = new HashSet<AppointmentsTable>();
+            this.PatientsTables = new HashSet<PatientsTable>();
+            this.TestsTables = new HashSet<TestsTable>();
         }
     
         public int DoctorID { get; set; }
@@ -31,5 +33,9 @@ namespace Hospital_System
         public virtual UsersTable UsersTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppointmentsTable> AppointmentsTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PatientsTable> PatientsTables { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TestsTable> TestsTables { get; set; }
     }
 }

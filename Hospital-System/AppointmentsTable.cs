@@ -23,5 +23,6 @@ namespace Hospital_System
         public string VisitSummary { get; set; }
     
         public virtual DoctorsTable DoctorsTable { get; set; }
+        public virtual PatientsTable PatientsTable { get; set; }
     }
 }

@@ -20,6 +20,7 @@ namespace Hospital_System
             this.DoctorsTables = new HashSet<DoctorsTable>();
             this.MessagesTables = new HashSet<MessagesTable>();
             this.MessagesTables1 = new HashSet<MessagesTable>();
+            this.PatientsTables = new HashSet<PatientsTable>();
         }
     
         public string UserLoginName { get; set; }
@@ -32,5 +33,7 @@ namespace Hospital_System
         public virtual ICollection<MessagesTable> MessagesTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MessagesTable> MessagesTables1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PatientsTable> PatientsTables { get; set; }
     }
 }

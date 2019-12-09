@@ -17,5 +17,7 @@ namespace Hospital_System
         public int MedicationID { get; set; }
         public string Description { get; set; }
         public int PatientID { get; set; }
+    
+        public virtual PatientsTable PatientsTable { get; set; }
     }
 }

@@ -30,5 +30,7 @@ namespace Hospital_System
         public virtual DbSet<MessagesTable> MessagesTables { get; set; }
         public virtual DbSet<UsersTable> UsersTables { get; set; }
         public virtual DbSet<MedicationListTable> MedicationListTables { get; set; }
+        public virtual DbSet<PatientsTable> PatientsTables { get; set; }
+        public virtual DbSet<TestsTable> TestsTables { get; set; }
     }
 }

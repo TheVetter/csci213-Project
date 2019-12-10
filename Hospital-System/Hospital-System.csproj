@@ -79,6 +79,8 @@
     <Content Include="App_Data\hospital-database_log.ldf">
       <DependentUpon>hospital-database.mdf</DependentUpon>
     </Content>
+    <Content Include="content\index.aspx" />
+    <Content Include="content\PatientList.aspx" />
     <Content Include="DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBModel.Context.cs</LastGenOutput>
@@ -89,12 +91,27 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Logon.aspx" />
     <Content Include="Web.config" />
     <Content Include="index.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppointmentsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="content\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="content\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="content\PatientList.aspx.cs">
+      <DependentUpon>PatientList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="content\PatientList.aspx.designer.cs">
+      <DependentUpon>PatientList.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -113,6 +130,13 @@
     </Compile>
     <Compile Include="DoctorsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Logon.aspx.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logon.aspx.designer.cs">
+      <DependentUpon>Logon.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicationListTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -153,6 +177,7 @@
     <Content Include="DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="content\Web.config" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <None Include="Web.Debug.config">

@@ -499,7 +499,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="hsEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AppointmentsTables" EntityType="Self.AppointmentsTable" />
           <EntitySet Name="DoctorsTables" EntityType="Self.DoctorsTable" />
           <EntitySet Name="MedicationListTables" EntityType="Self.MedicationListTable" />
@@ -557,7 +557,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="hsEntities">
           <EntitySetMapping Name="AppointmentsTables">
             <EntityTypeMapping TypeName="Model.AppointmentsTable">
               <MappingFragment StoreEntitySet="AppointmentsTable">

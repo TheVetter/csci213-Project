@@ -79,15 +79,15 @@
     <Content Include="App_Data\hospital-database_log.ldf">
       <DependentUpon>hospital-database.mdf</DependentUpon>
     </Content>
-    <Content Include="DBModel.Context.tt">
+    <Content Include="dbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
+      <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="DBModel.tt">
+    <Content Include="dbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DBModel.edmx</DependentUpon>
-      <LastGenOutput>DBModel.cs</LastGenOutput>
+      <DependentUpon>dbModel.edmx</DependentUpon>
+      <LastGenOutput>dbModel.cs</LastGenOutput>
     </Content>
     <Content Include="Doctor\DoctorAppt.aspx" />
     <Content Include="Doctor\DoctorHome.aspx" />
@@ -104,25 +104,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppointmentsTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel.Context.cs">
+    <Compile Include="dbModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.Context.tt</DependentUpon>
+      <DependentUpon>dbModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel.cs">
+    <Compile Include="dbModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel.Designer.cs">
+    <Compile Include="dbModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DBModel.edmx</DependentUpon>
+      <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="DoctorsTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Doctor\DoctorAppt.aspx.cs">
       <DependentUpon>DoctorAppt.aspx</DependentUpon>
@@ -160,13 +160,13 @@
       <DependentUpon>Logon.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicationListTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MessagesTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PatientsTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Patient\Medications.aspx.cs">
       <DependentUpon>Medications.aspx</DependentUpon>
@@ -219,20 +219,20 @@
       <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestsTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UsersTable.cs">
-      <DependentUpon>DBModel.tt</DependentUpon>
+      <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Doctor\Web.config" />
-    <EntityDeploy Include="DBModel.edmx">
+    <EntityDeploy Include="dbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>dbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="DBModel.edmx.diagram">
-      <DependentUpon>DBModel.edmx</DependentUpon>
+    <Content Include="dbModel.edmx.diagram">
+      <DependentUpon>dbModel.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Site1.Master" />

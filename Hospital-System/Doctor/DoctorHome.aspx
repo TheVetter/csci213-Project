@@ -3,6 +3,10 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
+        &nbsp;</p>
+    <p>
+        Hello Doctor</p>
+    <p>
     <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Doctor/DoctorAppt.aspx">Manage Patient Appointments</asp:HyperLink>
 </p>
 <p>

@@ -13,10 +13,10 @@ namespace Hospital_System
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities1()
+            : base("name=Entities1")
         {
         }
     
@@ -27,10 +27,10 @@ namespace Hospital_System
     
         public virtual DbSet<AppointmentsTable> AppointmentsTables { get; set; }
         public virtual DbSet<DoctorsTable> DoctorsTables { get; set; }
-        public virtual DbSet<MessagesTable> MessagesTables { get; set; }
-        public virtual DbSet<UsersTable> UsersTables { get; set; }
         public virtual DbSet<MedicationListTable> MedicationListTables { get; set; }
+        public virtual DbSet<MessagesTable> MessagesTables { get; set; }
         public virtual DbSet<PatientsTable> PatientsTables { get; set; }
         public virtual DbSet<TestsTable> TestsTables { get; set; }
+        public virtual DbSet<UsersTable> UsersTables { get; set; }
     }
 }

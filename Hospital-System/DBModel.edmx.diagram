@@ -4,26 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8fe27fa313984683a53f1f218ea16d33" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="Model.AppointmentsTable" Width="1.5" PointX="2.5" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DoctorsTable" Width="1.5" PointX="4.625" PointY="0.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MessagesTable" Width="1.5" PointX="3.875" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.UsersTable" Width="1.5" PointX="1.125" PointY="4.75" IsExpanded="true" />
-        <AssociationConnector Association="Model.FK__DoctorsTa__UserL__34C8D9D1" />
-        <AssociationConnector Association="Model.FK__Appointme__Docto__47DBAE45" />
-        <AssociationConnector Association="Model.FK__MessagesT__Messa__5BE2A6F2" />
-        <AssociationConnector Association="Model.FK__MessagesT__Messa__5CD6CB2B" />
-        <EntityTypeShape EntityType="Model.MedicationListTable" Width="1.5" PointX="9.625" PointY="6.25" />
-        <EntityTypeShape EntityType="Model.PatientsTable" Width="1.5" PointX="6.875" PointY="1.25" />
-        <EntityTypeShape EntityType="Model.TestsTable" Width="1.5" PointX="9.125" PointY="2.5" />
-        <AssociationConnector Association="Model.FK__Appointme__Patie__4D5F7D71" />
-        <AssociationConnector Association="Model.FK__PatientsT__Docto__2B0A656D" />
-        <AssociationConnector Association="Model.FK__TestsTabl__Docto__2EDAF651" />
-        <AssociationConnector Association="Model.FK__Medicatio__Patie__3A4CA8FD" />
-        <AssociationConnector Association="Model.FK__PatientsT__TestI__2CF2ADDF" />
-        <AssociationConnector Association="Model.FK__PatientsT__UserL__2BFE89A6" />
-        <AssociationConnector Association="Model.FK__TestsTabl__Patie__2DE6D218" />
-        <AssociationConnector Association="Model.FK__PatientsT__Medic__4BAC3F29" />
+      <Diagram DiagramId="d35a1995f7ec46e997b1d7fc536fc633" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.AppointmentsTable" Width="1.5" PointX="5.25" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DoctorsTable" Width="1.5" PointX="3.125" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MedicationListTable" Width="1.5" PointX="10.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MessagesTable" Width="1.5" PointX="2.25" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PatientsTable" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TestsTable" Width="1.5" PointX="9.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.UsersTable" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_AppointmentsTable_ToDoctorID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_AppointmentsTable_ToPatientTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_DoctorsTable_ToUserLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PatientsTable_ToDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TestTable_ToDoctor" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MedicationListTable_ToPatient" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PatientsTable_ToMedication" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_MessagesTable_ToUserTable" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PatientsTable_ToTest" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_PatientsTable_ToUserLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TestsTable_ToPatient" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

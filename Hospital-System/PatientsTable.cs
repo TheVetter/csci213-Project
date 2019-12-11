@@ -30,18 +30,18 @@ namespace Hospital_System
         public string Phone { get; set; }
         public string Email { get; set; }
         public string UserLoginName { get; set; }
-        public int MedicationID { get; set; }
-        public int TestID { get; set; }
+        public Nullable<int> MedicationID { get; set; }
+        public Nullable<int> TestID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppointmentsTable> AppointmentsTables { get; set; }
         public virtual DoctorsTable DoctorsTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MedicationListTable> MedicationListTables { get; set; }
+        public virtual MedicationListTable MedicationListTable { get; set; }
         public virtual TestsTable TestsTable { get; set; }
         public virtual UsersTable UsersTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TestsTable> TestsTables { get; set; }
-        public virtual MedicationListTable MedicationListTable { get; set; }
     }
 }

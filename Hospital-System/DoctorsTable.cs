@@ -30,9 +30,9 @@ namespace Hospital_System
         public string Email { get; set; }
         public string UserLoginName { get; set; }
     
-        public virtual UsersTable UsersTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AppointmentsTable> AppointmentsTables { get; set; }
+        public virtual UsersTable UsersTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PatientsTable> PatientsTables { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

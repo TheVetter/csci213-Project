@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AppointmentsTable">
           <Key>
             <PropertyRef Name="AppointmentID" />
@@ -59,8 +59,8 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserLoginName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="MedicationID" Type="int" Nullable="false" />
-          <Property Name="TestID" Type="int" Nullable="false" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="TestID" Type="int" />
         </EntityType>
         <EntityType Name="TestsTable">
           <Key>
@@ -80,7 +80,7 @@
           <Property Name="UserLoginPass" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserLoginType" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Appointme__Docto__3E52440B">
+        <Association Name="FK_AppointmentsTable_ToDoctorID">
           <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
           <End Role="AppointmentsTable" Type="Self.AppointmentsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,7 +92,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Patie__3F466844">
+        <Association Name="FK_AppointmentsTable_ToPatientTable">
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
           <End Role="AppointmentsTable" Type="Self.AppointmentsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -104,7 +104,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DoctorsTa__UserL__38996AB5">
+        <Association Name="FK_DoctorsTable_ToUserLogin">
           <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
           <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -116,7 +116,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicatio__Patie__4222D4EF">
+        <Association Name="FK_MedicationListTable_ToPatient">
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
           <End Role="MedicationListTable" Type="Self.MedicationListTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -128,19 +128,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__MessagesT__Messa__44FF419A">
-          <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
-          <End Role="MessagesTable" Type="Self.MessagesTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersTable">
-              <PropertyRef Name="UserLoginName" />
-            </Principal>
-            <Dependent Role="MessagesTable">
-              <PropertyRef Name="MessageTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MessagesT__Messa__45F365D3">
+        <Association Name="FK_MessagesTable_ToUserTable">
           <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
           <End Role="MessagesTable" Type="Self.MessagesTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -152,7 +140,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientsT__Docto__3B75D760">
+        <Association Name="FK_PatientsTable_ToDoctor">
           <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -164,8 +152,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientsT__Medic__4BAC3F29">
-          <End Role="MedicationListTable" Type="Self.MedicationListTable" Multiplicity="1" />
+        <Association Name="FK_PatientsTable_ToMedication">
+          <End Role="MedicationListTable" Type="Self.MedicationListTable" Multiplicity="0..1" />
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MedicationListTable">
@@ -176,8 +164,8 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientsT__TestI__4CA06362">
-          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="1" />
+        <Association Name="FK_PatientsTable_ToTest">
+          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="0..1" />
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TestsTable">
@@ -188,7 +176,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientsT__UserL__4AB81AF0">
+        <Association Name="FK_PatientsTable_ToUserLogin">
           <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -200,19 +188,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TestsTabl__Docto__5AEE82B9">
-          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
-          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DoctorsTable">
-              <PropertyRef Name="DoctorID" />
-            </Principal>
-            <Dependent Role="TestsTable">
-              <PropertyRef Name="DoctorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TestsTabl__Patie__48CFD27E">
+        <Association Name="FK_TestsTable_ToPatient">
           <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
           <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="*" />
           <ReferentialConstraint>
@@ -224,6 +200,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TestTable_ToDoctor">
+          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
+          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorsTable">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="TestsTable">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="AppointmentsTable" EntityType="Self.AppointmentsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoctorsTable" EntityType="Self.DoctorsTable" Schema="dbo" store:Type="Tables" />
@@ -232,56 +220,53 @@
           <EntitySet Name="PatientsTable" EntityType="Self.PatientsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TestsTable" EntityType="Self.TestsTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersTable" EntityType="Self.UsersTable" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Appointme__Docto__3E52440B" Association="Self.FK__Appointme__Docto__3E52440B">
+          <AssociationSet Name="FK_AppointmentsTable_ToDoctorID" Association="Self.FK_AppointmentsTable_ToDoctorID">
             <End Role="DoctorsTable" EntitySet="DoctorsTable" />
             <End Role="AppointmentsTable" EntitySet="AppointmentsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Patie__3F466844" Association="Self.FK__Appointme__Patie__3F466844">
+          <AssociationSet Name="FK_AppointmentsTable_ToPatientTable" Association="Self.FK_AppointmentsTable_ToPatientTable">
             <End Role="PatientsTable" EntitySet="PatientsTable" />
             <End Role="AppointmentsTable" EntitySet="AppointmentsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__DoctorsTa__UserL__38996AB5" Association="Self.FK__DoctorsTa__UserL__38996AB5">
+          <AssociationSet Name="FK_DoctorsTable_ToUserLogin" Association="Self.FK_DoctorsTable_ToUserLogin">
             <End Role="UsersTable" EntitySet="UsersTable" />
             <End Role="DoctorsTable" EntitySet="DoctorsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__Medicatio__Patie__4222D4EF" Association="Self.FK__Medicatio__Patie__4222D4EF">
+          <AssociationSet Name="FK_MedicationListTable_ToPatient" Association="Self.FK_MedicationListTable_ToPatient">
             <End Role="PatientsTable" EntitySet="PatientsTable" />
             <End Role="MedicationListTable" EntitySet="MedicationListTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__MessagesT__Messa__44FF419A" Association="Self.FK__MessagesT__Messa__44FF419A">
+          <AssociationSet Name="FK_MessagesTable_ToUserTable" Association="Self.FK_MessagesTable_ToUserTable">
             <End Role="UsersTable" EntitySet="UsersTable" />
             <End Role="MessagesTable" EntitySet="MessagesTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__MessagesT__Messa__45F365D3" Association="Self.FK__MessagesT__Messa__45F365D3">
-            <End Role="UsersTable" EntitySet="UsersTable" />
-            <End Role="MessagesTable" EntitySet="MessagesTable" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__Docto__3B75D760" Association="Self.FK__PatientsT__Docto__3B75D760">
+          <AssociationSet Name="FK_PatientsTable_ToDoctor" Association="Self.FK_PatientsTable_ToDoctor">
             <End Role="DoctorsTable" EntitySet="DoctorsTable" />
             <End Role="PatientsTable" EntitySet="PatientsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__Medic__4BAC3F29" Association="Self.FK__PatientsT__Medic__4BAC3F29">
+          <AssociationSet Name="FK_PatientsTable_ToMedication" Association="Self.FK_PatientsTable_ToMedication">
             <End Role="MedicationListTable" EntitySet="MedicationListTable" />
             <End Role="PatientsTable" EntitySet="PatientsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__TestI__4CA06362" Association="Self.FK__PatientsT__TestI__4CA06362">
+          <AssociationSet Name="FK_PatientsTable_ToTest" Association="Self.FK_PatientsTable_ToTest">
             <End Role="TestsTable" EntitySet="TestsTable" />
             <End Role="PatientsTable" EntitySet="PatientsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__UserL__4AB81AF0" Association="Self.FK__PatientsT__UserL__4AB81AF0">
+          <AssociationSet Name="FK_PatientsTable_ToUserLogin" Association="Self.FK_PatientsTable_ToUserLogin">
             <End Role="UsersTable" EntitySet="UsersTable" />
             <End Role="PatientsTable" EntitySet="PatientsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__TestsTabl__Docto__5AEE82B9" Association="Self.FK__TestsTabl__Docto__5AEE82B9">
-            <End Role="DoctorsTable" EntitySet="DoctorsTable" />
+          <AssociationSet Name="FK_TestsTable_ToPatient" Association="Self.FK_TestsTable_ToPatient">
+            <End Role="PatientsTable" EntitySet="PatientsTable" />
             <End Role="TestsTable" EntitySet="TestsTable" />
           </AssociationSet>
-          <AssociationSet Name="FK__TestsTabl__Patie__48CFD27E" Association="Self.FK__TestsTabl__Patie__48CFD27E">
-            <End Role="PatientsTable" EntitySet="PatientsTable" />
+          <AssociationSet Name="FK_TestTable_ToDoctor" Association="Self.FK_TestTable_ToDoctor">
+            <End Role="DoctorsTable" EntitySet="DoctorsTable" />
             <End Role="TestsTable" EntitySet="TestsTable" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -296,8 +281,8 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Time" Type="Time" Nullable="false" Precision="7" />
           <Property Name="VisitSummary" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DoctorsTable" Relationship="Model.FK__Appointme__Docto__47DBAE45" FromRole="AppointmentsTable" ToRole="DoctorsTable" />
-          <NavigationProperty Name="PatientsTable" Relationship="Model.FK__Appointme__Patie__4D5F7D71" FromRole="AppointmentsTable" ToRole="PatientsTable" />
+          <NavigationProperty Name="DoctorsTable" Relationship="Self.FK_AppointmentsTable_ToDoctorID" FromRole="AppointmentsTable" ToRole="DoctorsTable" />
+          <NavigationProperty Name="PatientsTable" Relationship="Self.FK_AppointmentsTable_ToPatientTable" FromRole="AppointmentsTable" ToRole="PatientsTable" />
         </EntityType>
         <EntityType Name="DoctorsTable">
           <Key>
@@ -310,10 +295,20 @@
           <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserLoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UsersTable" Relationship="Model.FK__DoctorsTa__UserL__34C8D9D1" FromRole="DoctorsTable" ToRole="UsersTable" />
-          <NavigationProperty Name="AppointmentsTables" Relationship="Model.FK__Appointme__Docto__47DBAE45" FromRole="DoctorsTable" ToRole="AppointmentsTable" />
-          <NavigationProperty Name="PatientsTables" Relationship="Model.FK__PatientsT__Docto__2B0A656D" FromRole="DoctorsTable" ToRole="PatientsTable" />
-          <NavigationProperty Name="TestsTables" Relationship="Model.FK__TestsTabl__Docto__2EDAF651" FromRole="DoctorsTable" ToRole="TestsTable" />
+          <NavigationProperty Name="AppointmentsTables" Relationship="Self.FK_AppointmentsTable_ToDoctorID" FromRole="DoctorsTable" ToRole="AppointmentsTable" />
+          <NavigationProperty Name="UsersTable" Relationship="Self.FK_DoctorsTable_ToUserLogin" FromRole="DoctorsTable" ToRole="UsersTable" />
+          <NavigationProperty Name="PatientsTables" Relationship="Self.FK_PatientsTable_ToDoctor" FromRole="DoctorsTable" ToRole="PatientsTable" />
+          <NavigationProperty Name="TestsTables" Relationship="Self.FK_TestTable_ToDoctor" FromRole="DoctorsTable" ToRole="TestsTable" />
+        </EntityType>
+        <EntityType Name="MedicationListTable">
+          <Key>
+            <PropertyRef Name="MedicationID" />
+          </Key>
+          <Property Name="MedicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="PatientsTable" Relationship="Self.FK_MedicationListTable_ToPatient" FromRole="MedicationListTable" ToRole="PatientsTable" />
+          <NavigationProperty Name="PatientsTables" Relationship="Self.FK_PatientsTable_ToMedication" FromRole="MedicationListTable" ToRole="PatientsTable" />
         </EntityType>
         <EntityType Name="MessagesTable">
           <Key>
@@ -324,8 +319,42 @@
           <Property Name="MessageFROM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UsersTable" Relationship="Model.FK__MessagesT__Messa__5BE2A6F2" FromRole="MessagesTable" ToRole="UsersTable" />
-          <NavigationProperty Name="UsersTable1" Relationship="Model.FK__MessagesT__Messa__5CD6CB2B" FromRole="MessagesTable" ToRole="UsersTable" />
+          <NavigationProperty Name="UsersTable" Relationship="Self.FK_MessagesTable_ToUserTable" FromRole="MessagesTable" ToRole="UsersTable" />
+        </EntityType>
+        <EntityType Name="PatientsTable">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserLoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="TestID" Type="Int32" />
+          <NavigationProperty Name="AppointmentsTables" Relationship="Self.FK_AppointmentsTable_ToPatientTable" FromRole="PatientsTable" ToRole="AppointmentsTable" />
+          <NavigationProperty Name="DoctorsTable" Relationship="Self.FK_PatientsTable_ToDoctor" FromRole="PatientsTable" ToRole="DoctorsTable" />
+          <NavigationProperty Name="MedicationListTables" Relationship="Self.FK_MedicationListTable_ToPatient" FromRole="PatientsTable" ToRole="MedicationListTable" />
+          <NavigationProperty Name="MedicationListTable" Relationship="Self.FK_PatientsTable_ToMedication" FromRole="PatientsTable" ToRole="MedicationListTable" />
+          <NavigationProperty Name="TestsTable" Relationship="Self.FK_PatientsTable_ToTest" FromRole="PatientsTable" ToRole="TestsTable" />
+          <NavigationProperty Name="UsersTable" Relationship="Self.FK_PatientsTable_ToUserLogin" FromRole="PatientsTable" ToRole="UsersTable" />
+          <NavigationProperty Name="TestsTables" Relationship="Self.FK_TestsTable_ToPatient" FromRole="PatientsTable" ToRole="TestsTable" />
+        </EntityType>
+        <EntityType Name="TestsTable">
+          <Key>
+            <PropertyRef Name="TestID" />
+          </Key>
+          <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="TestResults" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="DoctorsTable" Relationship="Self.FK_TestTable_ToDoctor" FromRole="TestsTable" ToRole="DoctorsTable" />
+          <NavigationProperty Name="PatientsTables" Relationship="Self.FK_PatientsTable_ToTest" FromRole="TestsTable" ToRole="PatientsTable" />
+          <NavigationProperty Name="PatientsTable" Relationship="Self.FK_TestsTable_ToPatient" FromRole="TestsTable" ToRole="PatientsTable" />
         </EntityType>
         <EntityType Name="UsersTable">
           <Key>
@@ -334,71 +363,37 @@
           <Property Name="UserLoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserLoginPass" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UserLoginType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="DoctorsTables" Relationship="Model.FK__DoctorsTa__UserL__34C8D9D1" FromRole="UsersTable" ToRole="DoctorsTable" />
-          <NavigationProperty Name="MessagesTables" Relationship="Model.FK__MessagesT__Messa__5BE2A6F2" FromRole="UsersTable" ToRole="MessagesTable" />
-          <NavigationProperty Name="MessagesTables1" Relationship="Model.FK__MessagesT__Messa__5CD6CB2B" FromRole="UsersTable" ToRole="MessagesTable" />
-          <NavigationProperty Name="PatientsTables" Relationship="Model.FK__PatientsT__UserL__2BFE89A6" FromRole="UsersTable" ToRole="PatientsTable" />
+          <NavigationProperty Name="DoctorsTables" Relationship="Self.FK_DoctorsTable_ToUserLogin" FromRole="UsersTable" ToRole="DoctorsTable" />
+          <NavigationProperty Name="MessagesTables" Relationship="Self.FK_MessagesTable_ToUserTable" FromRole="UsersTable" ToRole="MessagesTable" />
+          <NavigationProperty Name="PatientsTables" Relationship="Self.FK_PatientsTable_ToUserLogin" FromRole="UsersTable" ToRole="PatientsTable" />
         </EntityType>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AppointmentsTables" EntityType="Self.AppointmentsTable" />
-          <EntitySet Name="DoctorsTables" EntityType="Self.DoctorsTable" />
-          <EntitySet Name="MessagesTables" EntityType="Self.MessagesTable" />
-          <EntitySet Name="UsersTables" EntityType="Self.UsersTable" />
-          <AssociationSet Name="FK__DoctorsTa__UserL__34C8D9D1" Association="Model.FK__DoctorsTa__UserL__34C8D9D1">
-            <End Role="UsersTable" EntitySet="UsersTables" />
-            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Appointme__Docto__47DBAE45" Association="Model.FK__Appointme__Docto__47DBAE45">
-            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
-            <End Role="AppointmentsTable" EntitySet="AppointmentsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MessagesT__Messa__5BE2A6F2" Association="Model.FK__MessagesT__Messa__5BE2A6F2">
-            <End Role="UsersTable" EntitySet="UsersTables" />
-            <End Role="MessagesTable" EntitySet="MessagesTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__MessagesT__Messa__5CD6CB2B" Association="Model.FK__MessagesT__Messa__5CD6CB2B">
-            <End Role="UsersTable" EntitySet="UsersTables" />
-            <End Role="MessagesTable" EntitySet="MessagesTables" />
-          </AssociationSet>
-          <EntitySet Name="MedicationListTables" EntityType="Model.MedicationListTable" />
-          <EntitySet Name="PatientsTables" EntityType="Model.PatientsTable" />
-          <EntitySet Name="TestsTables" EntityType="Model.TestsTable" />
-          <AssociationSet Name="FK__Appointme__Patie__4D5F7D71" Association="Model.FK__Appointme__Patie__4D5F7D71">
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-            <End Role="AppointmentsTable" EntitySet="AppointmentsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__Docto__2B0A656D" Association="Model.FK__PatientsT__Docto__2B0A656D">
-            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TestsTabl__Docto__2EDAF651" Association="Model.FK__TestsTabl__Docto__2EDAF651">
-            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
-            <End Role="TestsTable" EntitySet="TestsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Medicatio__Patie__3A4CA8FD" Association="Model.FK__Medicatio__Patie__3A4CA8FD">
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-            <End Role="MedicationListTable" EntitySet="MedicationListTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__TestI__2CF2ADDF" Association="Model.FK__PatientsT__TestI__2CF2ADDF">
-            <End Role="TestsTable" EntitySet="TestsTables" />
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__UserL__2BFE89A6" Association="Model.FK__PatientsT__UserL__2BFE89A6">
-            <End Role="UsersTable" EntitySet="UsersTables" />
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TestsTabl__Patie__2DE6D218" Association="Model.FK__TestsTabl__Patie__2DE6D218">
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-            <End Role="TestsTable" EntitySet="TestsTables" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PatientsT__Medic__4BAC3F29" Association="Model.FK__PatientsT__Medic__4BAC3F29">
-            <End Role="MedicationListTable" EntitySet="MedicationListTables" />
-            <End Role="PatientsTable" EntitySet="PatientsTables" />
-          </AssociationSet>
-        </EntityContainer>
-        <Association Name="FK__DoctorsTa__UserL__34C8D9D1">
-          <End Type="Model.UsersTable" Role="UsersTable" Multiplicity="1" />
-          <End Type="Model.DoctorsTable" Role="DoctorsTable" Multiplicity="*" />
+        <Association Name="FK_AppointmentsTable_ToDoctorID">
+          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
+          <End Role="AppointmentsTable" Type="Self.AppointmentsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DoctorsTable">
+              <PropertyRef Name="DoctorID" />
+            </Principal>
+            <Dependent Role="AppointmentsTable">
+              <PropertyRef Name="DoctorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AppointmentsTable_ToPatientTable">
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
+          <End Role="AppointmentsTable" Type="Self.AppointmentsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientsTable">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="AppointmentsTable">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DoctorsTable_ToUserLogin">
+          <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
+          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UsersTable">
               <PropertyRef Name="UserLoginName" />
@@ -408,102 +403,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Appointme__Docto__47DBAE45">
-          <End Type="Model.DoctorsTable" Role="DoctorsTable" Multiplicity="1" />
-          <End Type="Model.AppointmentsTable" Role="AppointmentsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DoctorsTable">
-              <PropertyRef Name="DoctorID" />
-            </Principal>
-            <Dependent Role="AppointmentsTable">
-              <PropertyRef Name="DoctorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MessagesT__Messa__5BE2A6F2">
-          <End Type="Model.UsersTable" Role="UsersTable" Multiplicity="1" />
-          <End Type="Model.MessagesTable" Role="MessagesTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersTable">
-              <PropertyRef Name="UserLoginName" />
-            </Principal>
-            <Dependent Role="MessagesTable">
-              <PropertyRef Name="MessageTO" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__MessagesT__Messa__5CD6CB2B">
-          <End Type="Model.UsersTable" Role="UsersTable" Multiplicity="1" />
-          <End Type="Model.MessagesTable" Role="MessagesTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersTable">
-              <PropertyRef Name="UserLoginName" />
-            </Principal>
-            <Dependent Role="MessagesTable">
-              <PropertyRef Name="MessageFROM" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="MedicationListTable">
-          <Key>
-            <PropertyRef Name="MedicationID" />
-          </Key>
-          <Property Name="MedicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="PatientID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="PatientsTable" Relationship="Model.FK__Medicatio__Patie__3A4CA8FD" FromRole="MedicationListTable" ToRole="PatientsTable" />
-          <NavigationProperty Name="PatientsTables" Relationship="Model.FK__PatientsT__Medic__4BAC3F29" FromRole="MedicationListTable" ToRole="PatientsTable" />
-        </EntityType>
-        <EntityType Name="PatientsTable">
-          <Key>
-            <PropertyRef Name="PatientID" />
-          </Key>
-          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DoctorID" Type="Int32" Nullable="false" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UserLoginName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MedicationID" Type="Int32" Nullable="false" />
-          <Property Name="TestID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="AppointmentsTables" Relationship="Model.FK__Appointme__Patie__4D5F7D71" FromRole="PatientsTable" ToRole="AppointmentsTable" />
-          <NavigationProperty Name="DoctorsTable" Relationship="Model.FK__PatientsT__Docto__2B0A656D" FromRole="PatientsTable" ToRole="DoctorsTable" />
-          <NavigationProperty Name="MedicationListTables" Relationship="Model.FK__Medicatio__Patie__3A4CA8FD" FromRole="PatientsTable" ToRole="MedicationListTable" />
-          <NavigationProperty Name="TestsTable" Relationship="Model.FK__PatientsT__TestI__2CF2ADDF" FromRole="PatientsTable" ToRole="TestsTable" />
-          <NavigationProperty Name="UsersTable" Relationship="Model.FK__PatientsT__UserL__2BFE89A6" FromRole="PatientsTable" ToRole="UsersTable" />
-          <NavigationProperty Name="TestsTables" Relationship="Model.FK__TestsTabl__Patie__2DE6D218" FromRole="PatientsTable" ToRole="TestsTable" />
-          <NavigationProperty Name="MedicationListTable" Relationship="Model.FK__PatientsT__Medic__4BAC3F29" FromRole="PatientsTable" ToRole="MedicationListTable" />
-        </EntityType>
-        <EntityType Name="TestsTable">
-          <Key>
-            <PropertyRef Name="TestID" />
-          </Key>
-          <Property Name="TestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PatientID" Type="Int32" Nullable="false" />
-          <Property Name="TestResults" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DoctorID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DoctorsTable" Relationship="Model.FK__TestsTabl__Docto__2EDAF651" FromRole="TestsTable" ToRole="DoctorsTable" />
-          <NavigationProperty Name="PatientsTables" Relationship="Model.FK__PatientsT__TestI__2CF2ADDF" FromRole="TestsTable" ToRole="PatientsTable" />
-          <NavigationProperty Name="PatientsTable" Relationship="Model.FK__TestsTabl__Patie__2DE6D218" FromRole="TestsTable" ToRole="PatientsTable" />
-        </EntityType>
-        <Association Name="FK__Appointme__Patie__4D5F7D71">
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="1" />
-          <End Type="Model.AppointmentsTable" Role="AppointmentsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PatientsTable">
-              <PropertyRef Name="PatientID" />
-            </Principal>
-            <Dependent Role="AppointmentsTable">
-              <PropertyRef Name="PatientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PatientsT__Docto__2B0A656D">
-          <End Type="Model.DoctorsTable" Role="DoctorsTable" Multiplicity="1" />
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="*" />
+        <Association Name="FK_PatientsTable_ToDoctor">
+          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DoctorsTable">
               <PropertyRef Name="DoctorID" />
@@ -513,9 +415,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__TestsTabl__Docto__2EDAF651">
-          <End Type="Model.DoctorsTable" Role="DoctorsTable" Multiplicity="1" />
-          <End Type="Model.TestsTable" Role="TestsTable" Multiplicity="*" />
+        <Association Name="FK_TestTable_ToDoctor">
+          <End Role="DoctorsTable" Type="Self.DoctorsTable" Multiplicity="1" />
+          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DoctorsTable">
               <PropertyRef Name="DoctorID" />
@@ -525,9 +427,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Medicatio__Patie__3A4CA8FD">
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="1" />
-          <End Type="Model.MedicationListTable" Role="MedicationListTable" Multiplicity="*" />
+        <Association Name="FK_MedicationListTable_ToPatient">
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
+          <End Role="MedicationListTable" Type="Self.MedicationListTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PatientsTable">
               <PropertyRef Name="PatientID" />
@@ -537,45 +439,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PatientsT__TestI__2CF2ADDF">
-          <End Type="Model.TestsTable" Role="TestsTable" Multiplicity="1" />
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TestsTable">
-              <PropertyRef Name="TestID" />
-            </Principal>
-            <Dependent Role="PatientsTable">
-              <PropertyRef Name="TestID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PatientsT__UserL__2BFE89A6">
-          <End Type="Model.UsersTable" Role="UsersTable" Multiplicity="1" />
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsersTable">
-              <PropertyRef Name="UserLoginName" />
-            </Principal>
-            <Dependent Role="PatientsTable">
-              <PropertyRef Name="UserLoginName" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TestsTabl__Patie__2DE6D218">
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="1" />
-          <End Type="Model.TestsTable" Role="TestsTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PatientsTable">
-              <PropertyRef Name="PatientID" />
-            </Principal>
-            <Dependent Role="TestsTable">
-              <PropertyRef Name="PatientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PatientsT__Medic__4BAC3F29">
-          <End Type="Model.MedicationListTable" Role="MedicationListTable" Multiplicity="1" />
-          <End Type="Model.PatientsTable" Role="PatientsTable" Multiplicity="*" />
+        <Association Name="FK_PatientsTable_ToMedication">
+          <End Role="MedicationListTable" Type="Self.MedicationListTable" Multiplicity="0..1" />
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="MedicationListTable">
               <PropertyRef Name="MedicationID" />
@@ -585,12 +451,113 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_MessagesTable_ToUserTable">
+          <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
+          <End Role="MessagesTable" Type="Self.MessagesTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTable">
+              <PropertyRef Name="UserLoginName" />
+            </Principal>
+            <Dependent Role="MessagesTable">
+              <PropertyRef Name="MessageFROM" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientsTable_ToTest">
+          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="0..1" />
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestsTable">
+              <PropertyRef Name="TestID" />
+            </Principal>
+            <Dependent Role="PatientsTable">
+              <PropertyRef Name="TestID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PatientsTable_ToUserLogin">
+          <End Role="UsersTable" Type="Self.UsersTable" Multiplicity="1" />
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersTable">
+              <PropertyRef Name="UserLoginName" />
+            </Principal>
+            <Dependent Role="PatientsTable">
+              <PropertyRef Name="UserLoginName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestsTable_ToPatient">
+          <End Role="PatientsTable" Type="Self.PatientsTable" Multiplicity="1" />
+          <End Role="TestsTable" Type="Self.TestsTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PatientsTable">
+              <PropertyRef Name="PatientID" />
+            </Principal>
+            <Dependent Role="TestsTable">
+              <PropertyRef Name="PatientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppointmentsTables" EntityType="Self.AppointmentsTable" />
+          <EntitySet Name="DoctorsTables" EntityType="Self.DoctorsTable" />
+          <EntitySet Name="MedicationListTables" EntityType="Self.MedicationListTable" />
+          <EntitySet Name="MessagesTables" EntityType="Self.MessagesTable" />
+          <EntitySet Name="PatientsTables" EntityType="Self.PatientsTable" />
+          <EntitySet Name="TestsTables" EntityType="Self.TestsTable" />
+          <EntitySet Name="UsersTables" EntityType="Self.UsersTable" />
+          <AssociationSet Name="FK_AppointmentsTable_ToDoctorID" Association="Self.FK_AppointmentsTable_ToDoctorID">
+            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
+            <End Role="AppointmentsTable" EntitySet="AppointmentsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AppointmentsTable_ToPatientTable" Association="Self.FK_AppointmentsTable_ToPatientTable">
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+            <End Role="AppointmentsTable" EntitySet="AppointmentsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DoctorsTable_ToUserLogin" Association="Self.FK_DoctorsTable_ToUserLogin">
+            <End Role="UsersTable" EntitySet="UsersTables" />
+            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientsTable_ToDoctor" Association="Self.FK_PatientsTable_ToDoctor">
+            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestTable_ToDoctor" Association="Self.FK_TestTable_ToDoctor">
+            <End Role="DoctorsTable" EntitySet="DoctorsTables" />
+            <End Role="TestsTable" EntitySet="TestsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MedicationListTable_ToPatient" Association="Self.FK_MedicationListTable_ToPatient">
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+            <End Role="MedicationListTable" EntitySet="MedicationListTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientsTable_ToMedication" Association="Self.FK_PatientsTable_ToMedication">
+            <End Role="MedicationListTable" EntitySet="MedicationListTables" />
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MessagesTable_ToUserTable" Association="Self.FK_MessagesTable_ToUserTable">
+            <End Role="UsersTable" EntitySet="UsersTables" />
+            <End Role="MessagesTable" EntitySet="MessagesTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientsTable_ToTest" Association="Self.FK_PatientsTable_ToTest">
+            <End Role="TestsTable" EntitySet="TestsTables" />
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PatientsTable_ToUserLogin" Association="Self.FK_PatientsTable_ToUserLogin">
+            <End Role="UsersTable" EntitySet="UsersTables" />
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestsTable_ToPatient" Association="Self.FK_TestsTable_ToPatient">
+            <End Role="PatientsTable" EntitySet="PatientsTables" />
+            <End Role="TestsTable" EntitySet="TestsTables" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="AppointmentsTables">
             <EntityTypeMapping TypeName="Model.AppointmentsTable">
               <MappingFragment StoreEntitySet="AppointmentsTable">
@@ -617,6 +584,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="MedicationListTables">
+            <EntityTypeMapping TypeName="Model.MedicationListTable">
+              <MappingFragment StoreEntitySet="MedicationListTable">
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MessagesTables">
             <EntityTypeMapping TypeName="Model.MessagesTable">
               <MappingFragment StoreEntitySet="MessagesTable">
@@ -628,48 +604,39 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UsersTables">
-            <EntityTypeMapping TypeName="Model.UsersTable">
-              <MappingFragment StoreEntitySet="UsersTable">
-                <ScalarProperty Name="UserLoginName" ColumnName="UserLoginName" />
-                <ScalarProperty Name="UserLoginPass" ColumnName="UserLoginPass" />
-                <ScalarProperty Name="UserLoginType" ColumnName="UserLoginType" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MedicationListTables">
-            <EntityTypeMapping TypeName="Model.MedicationListTable">
-              <MappingFragment StoreEntitySet="MedicationListTable">
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="PatientsTables">
             <EntityTypeMapping TypeName="Model.PatientsTable">
               <MappingFragment StoreEntitySet="PatientsTable">
-                <ScalarProperty Name="TestID" ColumnName="TestID" />
-                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
-                <ScalarProperty Name="UserLoginName" ColumnName="UserLoginName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
                 <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserLoginName" ColumnName="UserLoginName" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="TestID" ColumnName="TestID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TestsTables">
             <EntityTypeMapping TypeName="Model.TestsTable">
               <MappingFragment StoreEntitySet="TestsTable">
-                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
-                <ScalarProperty Name="TestResults" ColumnName="TestResults" />
-                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
                 <ScalarProperty Name="TestID" ColumnName="TestID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="TestResults" ColumnName="TestResults" />
+                <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersTables">
+            <EntityTypeMapping TypeName="Model.UsersTable">
+              <MappingFragment StoreEntitySet="UsersTable">
+                <ScalarProperty Name="UserLoginName" ColumnName="UserLoginName" />
+                <ScalarProperty Name="UserLoginPass" ColumnName="UserLoginPass" />
+                <ScalarProperty Name="UserLoginType" ColumnName="UserLoginType" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

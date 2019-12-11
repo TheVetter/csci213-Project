@@ -81,8 +81,8 @@
     </Content>
     <Content Include="DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
       <DependentUpon>DBModel.edmx</DependentUpon>
+      <LastGenOutput>DBModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="DBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -226,6 +226,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Doctor\Web.config" />
     <EntityDeploy Include="DBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>DBModel.Designer.cs</LastGenOutput>
@@ -233,7 +234,6 @@
     <Content Include="DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="Doctor\Web.config" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
     <Content Include="Patient\Web.config" />

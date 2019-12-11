@@ -21,6 +21,5 @@ namespace Hospital_System
         public string Message { get; set; }
     
         public virtual UsersTable UsersTable { get; set; }
-        public virtual UsersTable UsersTable1 { get; set; }
     }
 }

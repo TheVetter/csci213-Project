@@ -15,12 +15,13 @@ namespace Hospital_System
             UnobtrusiveValidationMode = System.Web.UI.UnobtrusiveValidationMode.None;
         }
 
-        protected void Login1_Authenticate(object sender, AuthenticateEventArgs e)
+        protected void Login1_Authenticate1(object sender, AuthenticateEventArgs e)
         {
-            if (Login1.UserName== "abc" && Login1.Password == "123")
+            if (Login1.UserName == "abc" && Login1.Password == "123")
             {
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
             }
+
         }
     }
 }

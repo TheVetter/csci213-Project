@@ -3,7 +3,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     HEllo:&nbsp;<p>
-        <asp:LoginStatus ID="LoginStatus1" runat="server" />
+       <asp:LoginStatus ID="LoginStatus1" runat="server" />
 </p>
     <p>
         &nbsp;</p>

@@ -13,7 +13,7 @@
         <AssociationConnector Association="Model.FK__Appointme__Docto__47DBAE45" />
         <AssociationConnector Association="Model.FK__MessagesT__Messa__5BE2A6F2" />
         <AssociationConnector Association="Model.FK__MessagesT__Messa__5CD6CB2B" />
-        <EntityTypeShape EntityType="Model.MedicationListTable" Width="1.5" PointX="7.625" PointY="6" />
+        <EntityTypeShape EntityType="Model.MedicationListTable" Width="1.5" PointX="9.625" PointY="6.25" />
         <EntityTypeShape EntityType="Model.PatientsTable" Width="1.5" PointX="6.875" PointY="1.25" />
         <EntityTypeShape EntityType="Model.TestsTable" Width="1.5" PointX="9.125" PointY="2.5" />
         <AssociationConnector Association="Model.FK__Appointme__Patie__4D5F7D71" />
@@ -23,6 +23,7 @@
         <AssociationConnector Association="Model.FK__PatientsT__TestI__2CF2ADDF" />
         <AssociationConnector Association="Model.FK__PatientsT__UserL__2BFE89A6" />
         <AssociationConnector Association="Model.FK__TestsTabl__Patie__2DE6D218" />
+        <AssociationConnector Association="Model.FK__PatientsT__Medic__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

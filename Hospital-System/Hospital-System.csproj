@@ -99,6 +99,7 @@
     <Content Include="Patient\patientHome.aspx" />
     <Content Include="Patient\PatientMessages.aspx" />
     <Content Include="Patient\TestResults.aspx" />
+    <Content Include="pics\genericDoctor.jpg" />
     <Content Include="Web.config" />
     <Content Include="home.aspx" />
   </ItemGroup>

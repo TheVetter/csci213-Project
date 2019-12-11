@@ -4,13 +4,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
-        <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Patient/patientHome.aspx">Patient Home</asp:HyperLink>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Doctor/DoctorHome.aspx">Doctor Home</asp:HyperLink>
-    </p>
+        Hello Welcome to our hospital</p>
     <p>
-        <br />
-    </p>
+        Please Login above</p>
+    <p>
+        At our hosptial we are here to make you feel better</p>
+    <asp:Image ID="Image1" runat="server" Height="224px" Width="385px" ImageUrl="~/pics/genericDoctor.jpg" />
     <p>
     </p>
     <p>

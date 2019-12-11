@@ -79,8 +79,6 @@
     <Content Include="App_Data\hospital-database_log.ldf">
       <DependentUpon>hospital-database.mdf</DependentUpon>
     </Content>
-    <Content Include="content\index.aspx" />
-    <Content Include="content\PatientList.aspx" />
     <Content Include="DBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBModel.Context.cs</LastGenOutput>
@@ -91,27 +89,22 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
       <LastGenOutput>DBModel.cs</LastGenOutput>
     </Content>
+    <Content Include="Doctor\DoctorAppt.aspx" />
+    <Content Include="Doctor\DoctorHome.aspx" />
+    <Content Include="Doctor\DoctorMessages.aspx" />
+    <Content Include="Doctor\PatientInfo.aspx" />
     <Content Include="Logon.aspx" />
+    <Content Include="Patient\Medications.aspx" />
+    <Content Include="Patient\PatientAppt.aspx" />
+    <Content Include="Patient\patientHome.aspx" />
+    <Content Include="Patient\PatientMessages.aspx" />
+    <Content Include="Patient\TestResults.aspx" />
     <Content Include="Web.config" />
-    <Content Include="index.aspx" />
+    <Content Include="home.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppointmentsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="content\index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="content\index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="content\PatientList.aspx.cs">
-      <DependentUpon>PatientList.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="content\PatientList.aspx.designer.cs">
-      <DependentUpon>PatientList.aspx</DependentUpon>
     </Compile>
     <Compile Include="DBModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -131,6 +124,34 @@
     <Compile Include="DoctorsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Doctor\DoctorAppt.aspx.cs">
+      <DependentUpon>DoctorAppt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorAppt.aspx.designer.cs">
+      <DependentUpon>DoctorAppt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorHome.aspx.cs">
+      <DependentUpon>DoctorHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorHome.aspx.designer.cs">
+      <DependentUpon>DoctorHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\DoctorMessages.aspx.cs">
+      <DependentUpon>DoctorMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\DoctorMessages.aspx.designer.cs">
+      <DependentUpon>DoctorMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Doctor\PatientInfo.aspx.cs">
+      <DependentUpon>PatientInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Doctor\PatientInfo.aspx.designer.cs">
+      <DependentUpon>PatientInfo.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logon.aspx.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,6 +168,41 @@
     <Compile Include="PatientsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Patient\Medications.aspx.cs">
+      <DependentUpon>Medications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\Medications.aspx.designer.cs">
+      <DependentUpon>Medications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\PatientAppt.aspx.cs">
+      <DependentUpon>PatientAppt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\PatientAppt.aspx.designer.cs">
+      <DependentUpon>PatientAppt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\patientHome.aspx.cs">
+      <DependentUpon>patientHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\patientHome.aspx.designer.cs">
+      <DependentUpon>patientHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\PatientMessages.aspx.cs">
+      <DependentUpon>PatientMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\PatientMessages.aspx.designer.cs">
+      <DependentUpon>PatientMessages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patient\TestResults.aspx.cs">
+      <DependentUpon>TestResults.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patient\TestResults.aspx.designer.cs">
+      <DependentUpon>TestResults.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site1.Master.cs">
       <DependentUpon>Site1.Master</DependentUpon>
@@ -155,12 +211,12 @@
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
     </Compile>
-    <Compile Include="index.aspx.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="home.aspx.cs">
+      <DependentUpon>home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="index.aspx.designer.cs">
-      <DependentUpon>index.aspx</DependentUpon>
+    <Compile Include="home.aspx.designer.cs">
+      <DependentUpon>home.aspx</DependentUpon>
     </Compile>
     <Compile Include="TestsTable.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -177,9 +233,10 @@
     <Content Include="DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
-    <Content Include="content\Web.config" />
+    <Content Include="Doctor\Web.config" />
     <None Include="packages.config" />
     <Content Include="Site1.Master" />
+    <Content Include="Patient\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -190,6 +247,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

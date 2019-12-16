@@ -42,12 +42,24 @@ namespace Hospital_System
             if (user !=null && user.UserLoginType.Trim().Equals("Patient"))
             {
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, false);
+
+                dbcon.PatientsTables.Load();
+                int patpk = Convert.ToInt32((from x in dbcon.PatientsTables.Local
+                                            where x.UserLoginName.Equals(user.UserLoginName)
+                                            select x.PatientID).First());
+                Session.Add("patPK", patpk);
                 Response.Redirect("~/Patient/patientHome.aspx");
             }
             else if (user != null && user.UserLoginType.Trim().Equals("Doctor"))
             {
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
-                Response.Redirect("~/Doctor/DoctorHome.aspx"); 
+
+                dbcon.DoctorsTables.Load();
+                int docpk = Convert.ToInt32(from x in dbcon.DoctorsTables.Local
+                            where x.UserLoginName.Equals(user.UserLoginName)
+                            select x.DoctorID);
+                Session.Add("DocPK", docpk);
+                Response.Redirect("~/Doctor/DoctorHome.aspx");
             }
 
         }

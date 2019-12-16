@@ -66,15 +66,31 @@ namespace Hospital_System.Patient
                 app.Purpose = TextBox_purpose.Text.Trim();
 
 
-                //var confilcts = from x in dbcon.AppointmentsTables.Local
-                //                where x.PatientID == patPK && (DateTime.Compare(app.Date, DateTime.Now) == 0 )
-                //                select x
+                int confilcts_pat = (from x in dbcon.AppointmentsTables.Local
+                                    where x.PatientID == patPK && (DateTime.Compare(app.Date, x.Date) == 0)
+                                    && TimeSpan.Compare(app.Time, x.Time) ==0
+                                    select x).ToList().Count;
 
+                int confilcts_Doc = (from x in dbcon.AppointmentsTables.Local
+                                     where x.DoctorID == app.DoctorID && (DateTime.Compare(app.Date, x.Date) == 0)
+                                     && TimeSpan.Compare(app.Time, x.Time) == 0
+                                     select x).ToList().Count;
 
-                dbcon.AppointmentsTables.Add(app);
-                dbcon.SaveChanges();
-                GridView1.DataBind();
-                Label2.Text = "Appointment created!";
+                if (confilcts_Doc > 0)
+                {
+                    Label2.Text = "Error: Doctor has conflict";
+                }
+                else if (confilcts_pat > 0)
+                {
+                    Label2.Text = "Error: Can't schedule 2 appointments at the same time";
+                }
+                else
+                {
+                    dbcon.AppointmentsTables.Add(app);
+                    dbcon.SaveChanges();
+                    GridView1.DataBind();
+                    Label2.Text = "Appointment created!";
+                }
             }
         }
 

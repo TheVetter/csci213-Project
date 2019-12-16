@@ -17,9 +17,7 @@ namespace Hospital_System.Doctor
         {
             dbcon.MessagesTables.Load();
             dbcon.DoctorsTables.Load();
-            dbcon.PatientsTables.Load();
 
-            dbcon.MessagesTables.Load();
             if (Session.Count < 1)
             {
                 Response.Redirect("~/Logon.aspx");
@@ -124,10 +122,10 @@ namespace Hospital_System.Doctor
             {
                 dbcon.MessagesTables.Load(); // load up the database
 
-                // find the appointment based on the Appointment ID
+                // find the appointment based on the MessageID
                 MessagesTable mess2 = dbcon.MessagesTables.Find(Convert.ToInt32(GridViewSent.SelectedRow.Cells[1].Text)); // delete the item
 
-                dbcon.MessagesTables.Remove(mess2); //remove the appointment
+                dbcon.MessagesTables.Remove(mess2); //remove the message
                 dbcon.SaveChanges();// save the changes 
                 GridViewSent.DataBind();  // update the gridview
             }

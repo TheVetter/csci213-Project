@@ -32,7 +32,7 @@ namespace Hospital_System.Doctor
             }
 
             var appList = (from x in dbcon.AppointmentsTables.Local
-                           where x.PatientID == DocPK && (DateTime.Compare(x.Date, DateTime.Now) >= 0)
+                           where x.DoctorID == DocPK && (DateTime.Compare(x.Date, DateTime.Now) >= 0)
                            select x).ToList();
 
             GridView1.DataSource = appList;

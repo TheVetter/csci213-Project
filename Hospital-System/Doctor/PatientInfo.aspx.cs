@@ -113,8 +113,8 @@ namespace Hospital_System.Doctor
             {
 
                 var patientSearch2 = from x in dbcon.PatientsTables.Local
-                                    where x.LastName.StartsWith(textBoxInfo.Trim()) || x.FirstName.StartsWith(textBoxInfo.Trim())
-                                    select new
+                                    where x.LastName.ToLower().StartsWith(textBoxInfo.ToLower().Trim()) || x.FirstName.ToLower().StartsWith(textBoxInfo.ToLower().Trim())
+                                     select new
                                     {
                                         x.PatientID,
                                         Name = x.FirstName.ToString() + " " + x.LastName.ToString()

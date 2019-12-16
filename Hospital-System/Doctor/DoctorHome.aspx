@@ -13,7 +13,7 @@
     <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Doctor/PatientInfo.aspx">Patient Information</asp:HyperLink>
 </p>
 <p>
-    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Doctor/DoctorMessages.aspx">Send Message</asp:HyperLink>
+    <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Doctor/DoctorMessages.aspx">Message</asp:HyperLink>
 </p>
 <p>
     &nbsp;</p>

@@ -14,7 +14,8 @@ namespace Hospital_System.Patient
         private int patPK = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
+            dbcon.PatientsTables.Load();
             dbcon.AppointmentsTables.Load();
             if(Session.Count < 1)
             {
@@ -104,7 +105,7 @@ namespace Hospital_System.Patient
                 AppointmentsTable app = dbcon.AppointmentsTables.Find(Convert.ToInt32(GridView1.SelectedRow.Cells[1].Text)); // delete the item
 
                 dbcon.AppointmentsTables.Remove(app); //remove the appointment
-                dbcon.SaveChanges();// save the changes 
+                dbcon.SaveChanges(); // save the changes 
                 GridView1.DataBind();  // update the gridview
             }
 
@@ -120,7 +121,6 @@ namespace Hospital_System.Patient
             dbcon.DoctorsTables.Load();
 
             var items = from x in dbcon.DoctorsTables.Local
-                        where x.Department.Trim().StartsWith(DropDownListDepartment.SelectedValue.Trim())
                         select new
                         {
                             Name = "Dr. " + x.FirstName.ToString() + " " + x.LastName.ToString(),

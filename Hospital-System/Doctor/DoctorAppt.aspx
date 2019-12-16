@@ -9,10 +9,11 @@
     <p>
     </p>
     <p>
-        <asp:GridView ID="GridView1" runat="server">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="True">
         </asp:GridView>
     </p>
     <p>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Delete Appointment" />
     </p>
     <p>
     </p>

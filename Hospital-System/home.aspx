@@ -4,11 +4,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <p>
-        Hello Welcome to our hospital</p>
+        Hello, welcome to our hospital</p>
     <p>
         Please Login above</p>
     <p>
-        At our hosptial we are here to make you feel better</p>
+        At our hospital we are here to make you feel better</p>
     <asp:Image ID="Image1" runat="server" Height="224px" Width="385px" ImageUrl="~/pics/genericDoctor.jpg" />
     <p>
     </p>

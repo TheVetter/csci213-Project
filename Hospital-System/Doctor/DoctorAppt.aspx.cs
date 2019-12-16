@@ -38,5 +38,20 @@ namespace Hospital_System.Doctor
             GridView1.DataSource = appList;
             GridView1.DataBind();
         }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            if(GridView1.SelectedIndex >= 0)
+            {
+                dbcon.AppointmentsTables.Load(); // load up the database
+
+                // find the appointment based on the Appointment ID
+                AppointmentsTable app = dbcon.AppointmentsTables.Find(Convert.ToInt32(GridView1.SelectedRow.Cells[1].Text)); // delete the item
+
+                dbcon.AppointmentsTables.Remove(app); //remove the appointment
+                dbcon.SaveChanges();// save the changes 
+                GridView1.DataBind();  // update the gridview
+            }
+        }
     }
 }

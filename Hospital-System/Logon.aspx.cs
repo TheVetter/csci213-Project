@@ -55,9 +55,9 @@ namespace Hospital_System
                 FormsAuthentication.RedirectFromLoginPage(Login1.UserName, true);
 
                 dbcon.DoctorsTables.Load();
-                int docpk = Convert.ToInt32(from x in dbcon.DoctorsTables.Local
+                int docpk = Convert.ToInt32((from x in dbcon.DoctorsTables.Local
                             where x.UserLoginName.Equals(user.UserLoginName)
-                            select x.DoctorID);
+                            select x.DoctorID).First());
                 Session.Add("DocPK", docpk);
                 Response.Redirect("~/Doctor/DoctorHome.aspx");
             }

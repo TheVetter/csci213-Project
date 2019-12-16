@@ -94,6 +94,7 @@
     <Content Include="Doctor\DoctorMessages.aspx" />
     <Content Include="Doctor\PatientInfo.aspx" />
     <Content Include="Logon.aspx" />
+    <Content Include="logout.aspx" />
     <Content Include="Patient\Medications.aspx" />
     <Content Include="Patient\PatientAppt.aspx" />
     <Content Include="Patient\patientHome.aspx" />
@@ -159,6 +160,13 @@
     </Compile>
     <Compile Include="Logon.aspx.designer.cs">
       <DependentUpon>Logon.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="logout.aspx.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="logout.aspx.designer.cs">
+      <DependentUpon>logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="MedicationListTable.cs">
       <DependentUpon>dbModel.tt</DependentUpon>

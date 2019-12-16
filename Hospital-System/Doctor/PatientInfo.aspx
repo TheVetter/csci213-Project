@@ -11,9 +11,11 @@
     <p>
         Search for patient by PatientID or Last and First Name:
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Search_Button" runat="server" OnClick="Search_Button_Click" Text="Search" />
     </p>
     <p style="margin-left: 720px">
-        <asp:Button ID="Search_Button" runat="server" OnClick="Search_Button_Click" Text="Search" />
+        <asp:Label ID="Label4" runat="server"></asp:Label>
     </p>
     <p>
         <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3">

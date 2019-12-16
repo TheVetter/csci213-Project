@@ -94,7 +94,35 @@ namespace Hospital_System.Doctor
         //Search for patient by PatientID or Last and First Name
         protected void Search_Button_Click(object sender, EventArgs e)
         {
-            //TextBox1.Text
+            dbcon.PatientsTables.Load();
+            string textBoxInfo = TextBox1.Text;
+            int a;
+            if(Int32.TryParse(textBoxInfo, out a))
+            {
+                var patientSearch = from x in dbcon.PatientsTables.Local
+                                    where x.PatientID == Convert.ToInt32(textBoxInfo)
+                                    select new
+                                    {
+                                        x.PatientID,
+                                        Name = x.FirstName.ToString() + " " + x.LastName.ToString()
+                                    };
+                GridView1.DataSource = patientSearch;
+                GridView1.DataBind();
+            }
+            else
+            {
+
+                var patientSearch2 = from x in dbcon.PatientsTables.Local
+                                    where x.LastName.StartsWith(textBoxInfo.Trim()) || x.FirstName.StartsWith(textBoxInfo.Trim())
+                                    select new
+                                    {
+                                        x.PatientID,
+                                        Name = x.FirstName.ToString() + " " + x.LastName.ToString()
+                                    };
+                GridView1.DataSource = patientSearch2;
+                GridView1.DataBind();
+            }            
+
         }
     }
 }

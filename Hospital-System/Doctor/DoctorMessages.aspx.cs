@@ -100,5 +100,37 @@ namespace Hospital_System.Doctor
 
             GridViewSent.DataBind();
         }
+
+        //delete for inbox
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            if (GridViewInbox.SelectedIndex >= 0)
+            {
+                dbcon.MessagesTables.Load(); // load up the database
+
+                // find the appointment based on the Appointment ID
+                MessagesTable mess1 = dbcon.MessagesTables.Find(Convert.ToInt32(GridViewInbox.SelectedRow.Cells[1].Text)); // delete the item
+
+                dbcon.MessagesTables.Remove(mess1); //remove the appointment
+                dbcon.SaveChanges();// save the changes 
+                GridViewInbox.DataBind();  // update the gridview
+            }
+        }
+
+        //delete for sent messages
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            if (GridViewSent.SelectedIndex >= 0)
+            {
+                dbcon.MessagesTables.Load(); // load up the database
+
+                // find the appointment based on the Appointment ID
+                MessagesTable mess2 = dbcon.MessagesTables.Find(Convert.ToInt32(GridViewSent.SelectedRow.Cells[1].Text)); // delete the item
+
+                dbcon.MessagesTables.Remove(mess2); //remove the appointment
+                dbcon.SaveChanges();// save the changes 
+                GridViewSent.DataBind();  // update the gridview
+            }
+        }
     }
 }
